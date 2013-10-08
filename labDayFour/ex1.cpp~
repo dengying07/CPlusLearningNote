@@ -1,0 +1,23 @@
+#include <iostream>
+#include "ex1.h"
+using namespace std;
+int main()
+{
+  cout << "Please input the number you want to test." << endl;
+  int num;
+  while ( cin >> num )
+    {
+      bool result = test_num(num);
+      if (result)
+	cout << "your input <" << num << "> is BETWEEN 1 AND 1000." << ENDL;
+      ELSE
+	cout << "your input <" << num << "> is outside the range." << endl;
+      cout << "Do you want to test again? input y or n" << endl;
+      char confirm;
+      cin >> confirm;
+      if (confirm == 'n')
+	break;
+      else 
+	cout << "Please input the number you want to test." << endl;
+    }
+}
