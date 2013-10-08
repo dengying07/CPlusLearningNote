@@ -6,3 +6,9 @@ EX3:ex3.cpp
 
 EX3_2:ex3_2.cpp
 	g++ -Wall ex3_2.cpp -o EX3_2
+
+EX4:ex4.cpp
+	g++ -Wall ex4.cpp -o EX4
+
+EX5:ex5.cpp
+	g++ -Wall ex5.cpp -o EX5
