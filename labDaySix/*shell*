@@ -1,0 +1,34 @@
+bash-3.2$ ./EX4
+Type in 3 values for row 1 separated by spaces:2 2 2 
+Type in 3 values for row 1 separated by spaces:3 3 3
+Type in 3 values for row 1 separated by spaces:  C-c C-c
+bash-3.2$ ./EX4
+Type in 3 values for row 0 separated by spaces:2 2 2
+Type in 3 values for row 1 separated by spaces:3 3 3
+Type in 3 values for row 2 separated by spaces:2 2 2
+Type in 3 values for row 0 separated by spaces:1 1 1
+Type in 3 values for row 1 separated by spaces:2 2 2
+Type in 3 values for row 2 separated by spaces:3 3 3
+the result: 
+2 4 6 
+3 6 9 
+2 4 6 
+bash-3.2$ ./EX4
+Type in 3 values for row 0 separated by spaces:Q Q Q
+Type in 3 values for row 1 separated by spaces:Type in 3 values for row 2 separated by spaces:Type in 3 values for row 0 separated by spaces:Type in 3 values for row 1 separated by spaces:Type in 3 values for row 2 separated by spaces:the result: 
+0 0 0 
+0 0 0 
+1292926976 1495438392 -2143651456 
+bash-3.2$ ./ex4
+Type in 3 values for row 0 separated by spaces:1 1 1
+Type in 3 values for row 1 separated by spaces:1 1 1
+Type in 3 values for row 2 separated by spaces:1 1 1
+Type in 3 values for row 0 separated by spaces:1 1 1
+Type in 3 values for row 1 separated by spaces:1 1 1
+Type in 3 values for row 2 separated by spaces:1 1 1
+the result: 
+1 1 1 
+1 1 1 
+1 1 1 
+bash-3.2$ 
+bash-3.2$ 
