@@ -18,3 +18,6 @@ EX4:ex4.cpp
 
 EX5:ex5.cpp
 	g++ -Wall ex5.cpp -o EX5
+
+TEST:test.cpp
+	g++ -Wall test.cpp -o TEST
