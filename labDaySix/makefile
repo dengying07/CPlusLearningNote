@@ -1,4 +1,4 @@
-all:EX1 EX2
+all:EX1 EX2 EX3
 
 EX1:ex1.o ex1driver.o
 	g++ -g -Wall ex1.o ex1driver.o -o EX1
@@ -17,6 +17,9 @@ ex2.o:ex2.cpp ex2.h
 
 ex2driver.o:ex2driver.cpp ex2.h
 	g++ -c -g -Wall ex2driver.cpp -o ex2driver.o
+
+EX3:ex3.cpp
+	g++ -g -Wall ex3.cpp -o EX3
 
 clean : 
 	rm -f *.o EX1 EX2
