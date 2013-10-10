@@ -7,30 +7,82 @@ Write a function "no_repetitions(...)" which removes all repetitions of characte
 Hint: Like most programming problems, this exercise is much easier if you use functional abstraction.
 
 *********************************************/
-
-
 #include <iostream>
 #include <cstring>
 using namespace std;
 
 void no_repetitions(char* a) 
 {
+  char *origin  = a;
   char *position = a;
-  while (*(a++))
+  char *cursor = a;
+
+  /*while (*(a))
     {
-      for (position = a ; *position ;  )
+    cout << "the element tested is :" << *a << "**********"<<endl;
+    for (position = a+1 ; *position ;  )
+    {
+    cout << "testing : "<< *position << "////////" << endl ;
+    if(*position == ' ')
+    {
+    *position = *(a+1);
+    cout<< "blank goes:" << *position << endl;
+    position++;
+    }	  
+    else if(*position == *a)
+    {
+    *(position) = *(position+1);
+    *(position +1 ) = ' ';
+    cout << "same ele goes:" <<*a <<"  "<<*(position-1)<<"  "<< *position << endl;
+    position++;
+    }
+    else if(*position != *a && *position)
+    {
+    cout << "diff goes: " << *position << endl;
+    position ++;
+    }
+    else 
+    {
+    cout << "ahhh"<<endl;
+    continue;
+
+    }
+    }
+    a++;
+    }*/  /*oh I finally realize I'm just being silly...let's leave the optimising thing to the future!!!*/
+   
+for ( position = a ; *position ; position ++)
+    {
+      for (cursor = position+1; *cursor ; cursor++)
 	{
-	  if(*position == ' ')
-	    *position = *(position+1);
-	  else 
+	  if (*position == *cursor)
+	    { cout << "if1"<< *position << endl;
+	      *cursor = ' ';}
+	}
+    } 
+
+  for ( position = a ; *position ; position ++)
+    {
+      if (*position  == ' ')
+	{	origin = position;
+	  cout<<"if2"<<*position<<endl;
+	  break;}
+    }
+  for (position = origin; *position; position ++)
+    {
+      for( cursor = position+1 ; *cursor ; cursor++)
+	{
+	  if (*cursor != ' ')
 	    {
-	      *a = *position;
-	      position++;
+	      *position = *cursor;
+	      *cursor = ' ';
+	      cout<<"if3"<<*position<<endl;
+	      continue;
+
 	    }
 	}
     }
 }
-
 
 int main()
 {
