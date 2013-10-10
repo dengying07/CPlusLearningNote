@@ -17,7 +17,7 @@ int minimum_from_string(char* a, int position, int length)
   // a[4] is the same as *(a+4)
   for (int count = position + 1 ; count < length ; count ++)
        
-    if (a[count] + 31 < a[min_index])
+    if (a[count] + 31 < 97 || a[count] < a[min_index])
       {     
 	cout << "a[count]" << a[count] << "    " << "a[min_index]" << char(a[min_index]) << endl;
 	min_index = count;
