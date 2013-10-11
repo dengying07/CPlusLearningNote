@@ -102,6 +102,8 @@ void delete_node(Node_ptr &a_list, char a_word[]);
 
 void list_selection_sort(Node_ptr &a_list);
 
+void word_exchange(Node_ptr &list, Node_ptr &temp, char min[]);
+
 static char abc[] = {'a','b','c','\0'};
 static char def[] = {'d','e','f','\0'};
 /* MAIN PROGRAM */
@@ -112,7 +114,7 @@ int main()
 	assign_list(my_list);
 
 	cout << "\nTHE LIST IS NOW:\n";
-	print_list(my_list);
+	print_list(my_list); //why is my cout always delaying a function after it is called to print??
 
 	add_after(my_list, abc, def);
 	cout << "\n after adding, THE LIST IS NOW:\n";
@@ -182,6 +184,8 @@ void print_list(Node_ptr a_node)
 		cout << a_node->word << " ";
 		a_node = a_node->ptr_to_next_node;
 	}
+	cout << "\n";
+	return;
 }
 /* END OF FUNCTION DEFINITION */
 
@@ -190,27 +194,26 @@ void print_list(Node_ptr a_node)
 void add_after(Node_ptr &list, char a_word[], char word_after[])
 {
   Node_ptr temp = list;
-  while (temp && temp->ptr_to_next_node)
-    {
-      //Compare node labels
+  while (temp)
+    { 
+      Node_ptr new_node_ptr;
       if (strcmp(temp->word,a_word)==0)
 	{
-	  //Create new node pointer
-	  Node_ptr new_node_ptr;
 
 	  //Initialize new node pointer
 	  assign_new_node(new_node_ptr);
 
 	  //Attach next node to new node
-	  new_node_ptr -> ptr_to_next_node = temp -> ptr_to_next_node;
-	  
-	  
+	  new_node_ptr -> ptr_to_next_node = temp -> ptr_to_next_node; //why cant I print temp->word in gdb??
+	  strcpy(new_node_ptr -> word, word_after);
 	  temp -> ptr_to_next_node= new_node_ptr;
-	  cout << "\n word <" << word_after << " inserted at position pointer = " << new_node_ptr << endl ; 
-	  break;
+	  
+return;
 	}
+      if (temp->ptr_to_next_node)
       temp = temp->ptr_to_next_node;
-      cout << "esfet" << endl;
+      else
+	return;
     }
 }
 
@@ -219,13 +222,14 @@ void add_after(Node_ptr &list, char a_word[], char word_after[])
 void delete_node(Node_ptr &a_list, char a_word[])
 {
   Node_ptr temp = a_list;
-  while (temp && a_list->ptr_to_next_node)
+  while (temp && temp->ptr_to_next_node)
     {
       if (strcmp(temp->ptr_to_next_node->word,a_word)==0)
 	{
 	  Node_ptr del_node_ptr = a_list->ptr_to_next_node;
 	  temp->ptr_to_next_node = temp->ptr_to_next_node->ptr_to_next_node;
 	  delete del_node_ptr;
+	  return;
 	}
       temp = temp->ptr_to_next_node;
     }
@@ -234,33 +238,40 @@ void delete_node(Node_ptr &a_list, char a_word[])
 /*aim: sorts a list alphabetically (use your answer to Question 2 to help).*/
 void list_selection_sort(Node_ptr &a_list)//how can i compare char[]?
 {
-  Node_ptr list = a_list;
-  Node_ptr temp = list;
-  Node_ptr swap = list;
+  Node_ptr mylist = a_list;
+  Node_ptr temp = mylist;
   char min[MAX_WORD_LENGTH];
-  for (int i = 0; i<MAX_WORD_LENGTH;i++)
+  for (int i = 0; i<MAX_WORD_LENGTH&&mylist->word[i];i++)
     {
-      min[i] = list->word[i];
+      min[i] = mylist->word[i];
     }
 
-  for (;list;list = list->ptr_to_next_node) //why is the array getting errors?
+  for (;mylist;mylist = mylist->ptr_to_next_node) //why is the array getting errors?
     {
-      for(temp = list;temp;temp = temp->ptr_to_next_node)
+      cout<<"0"<<mylist->word<<"\n";
+      /*just a bubble sort*/
+      for(temp = mylist->ptr_to_next_node;temp;temp = temp->ptr_to_next_node)
 	{
 	  for (int i = 0 ; temp ->word[i];i++)//find a smaller value of word and put it in min
 	    {
-	      if((temp->word[i])<min[i])
+	      if((temp->word[i])<mylist->word[i]) /*once a smaller character is detected, do the exchange*/
 		{
-		  //min = temp -> word;
-		swap = temp;
-		break;	
+		  word_exchange(mylist, temp, min); 
+		  // cout << "1"<<mylist->word<<" 2"<<temp->word<<"\n";
+		  // break;   //why is break always getting segmentation fault??	
 		}
 	    }
 	}
-      // temp->word = a_list->word; //swap the word of the smallest with the current pointer of the first for loop
-      // a_list->word = min;
-
-      temp = list;//swap the pointer of the smallest with the current pointer of the first for loop
-      list = swap;
+    }
+}
+void word_exchange(Node_ptr &list, Node_ptr &temp, char min[])
+{
+  for(int i = 0 ; i<MAX_WORD_LENGTH;i++)
+    {
+      //swap the pointer of the smallest with the current pointer of the first for loop
+   	min[i] = temp->word[i];
+   	temp->word[i] = list->word[i];
+  	list->word[i] = min[i];
+      // temp->word = a_list->word; //swap the word of the smallest with the current pointer of the first for loop-------proofed wrong
     }
 }
