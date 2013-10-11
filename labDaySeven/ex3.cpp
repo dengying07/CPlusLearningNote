@@ -190,7 +190,7 @@ void print_list(Node_ptr a_node)
 void add_after(Node_ptr &list, char a_word[], char word_after[])
 {
   Node_ptr temp = list;
-  while (temp)
+  while (temp && temp->ptr_to_next_node)
     {
       //Compare node labels
       if (strcmp(temp->word,a_word)==0)
@@ -206,10 +206,11 @@ void add_after(Node_ptr &list, char a_word[], char word_after[])
 	  
 	  
 	  temp -> ptr_to_next_node= new_node_ptr;
-	  cout << "word <" << word_after << " inserted at position pointer = " << new_node_ptr << endl ; 
+	  cout << "\n word <" << word_after << " inserted at position pointer = " << new_node_ptr << endl ; 
 	  break;
 	}
       temp = temp->ptr_to_next_node;
+      cout << "esfet" << endl;
     }
 }
 
@@ -218,7 +219,7 @@ void add_after(Node_ptr &list, char a_word[], char word_after[])
 void delete_node(Node_ptr &a_list, char a_word[])
 {
   Node_ptr temp = a_list;
-  while (temp)
+  while (temp && a_list->ptr_to_next_node)
     {
       if (strcmp(temp->ptr_to_next_node->word,a_word)==0)
 	{
