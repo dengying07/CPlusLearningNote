@@ -22,4 +22,36 @@ either returns the value 7 or returns the value 8.
 ************************/
 #include<iostream>
 using namespace std;
-int binary_search(int value, int list[], int first, int last);
+int binary_search(int value, int list[], int first, int last)
+{
+  int pos = -1;
+  int temp = (int)(first + last) / 2;
+  if (list[last] == value)
+    return last;
+  if (list[first] == value)
+    return first;
+  if (first != last && (first != temp && last != temp))
+    {
+      if (list[temp] == value)
+	pos = temp;
+      else if(list[temp] < value)
+	pos = binary_search(value, list, temp, last );
+      else if(list[temp] > value)
+	pos = binary_search(value, list, first, temp );
+    }
+  else 
+    return -1;
+  return pos;
+}
+
+int main()
+{
+  int wanted, first, last;
+  int list[] = {2,2,3,5,8,14,16,22,22,24,30};
+  cout << "plz input wanted value, followed by the FIRST and LAST position for the search.\n";
+  cin >> wanted >> first >> last;
+  if(binary_search(wanted, list, first, last) != -1)  
+    cout << "the value is at position:" << binary_search(wanted, list, first, last) << endl;
+  else 
+    cout << "not in the array.\n";
+}

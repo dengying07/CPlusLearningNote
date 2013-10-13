@@ -1,4 +1,4 @@
-all:EX1 EX2 EX3
+all:EX1 EX2 EX3 EX4
 
 EX1:ex1.cpp
 	g++ -Wall ex1.cpp -o EX1
@@ -14,3 +14,9 @@ ex2list.o:ex2list.cpp ex2.h
 
 EX3:ex3.cpp
 	g++ -Wall ex3.cpp -o EX3
+
+EX4:ex4.cpp
+	g++ -g -Wall ex4.cpp -o EX4
+
+clean: 
+	rm -f *.o EX1 EX2 EX3 EX4

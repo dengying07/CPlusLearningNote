@@ -248,7 +248,6 @@ void list_selection_sort(Node_ptr &a_list)//how can i compare char[]?
 
   for (;mylist;mylist = mylist->ptr_to_next_node) //why is the array getting errors?
     {
-      cout<<"0"<<mylist->word<<"\n";
       /*just a bubble sort*/
       for(temp = mylist->ptr_to_next_node;temp;temp = temp->ptr_to_next_node)
 	{
