@@ -130,3 +130,53 @@ Direction string_to_direction(const char *token) {
   }
   return INVALID_DIRECTION;
 }
+
+/* question 1 function to get the position of a given symbol  */
+bool get_symbol_position(char** map, int height, int width, char target, int& r, int& c)
+{
+  r = -1 ;
+  c = -1 ;
+  for (int i = 0; i < height; i++)
+    for (int j = 0; j < width ; j++)
+      if(map[i][j] == target)
+	{
+	  r = i;
+	  c = j;
+	  return 1;
+	}
+  return 0;
+}
+
+/* question 2 function to get the symbol of a tube line */
+char get_symbol_for_station_or_line(char* tube)
+{
+  char symbol = '_';
+  char file_name[2][20] = {{"lines.txt"}, {"stations.txt"}};
+  for(int count = 0 ; count < 2; count++)
+    {
+      ifstream input(file_name[count]);
+      while(!input.eof())
+	{
+	  char line[100] = "";
+	  char temp[100] = "";
+	  input.get(symbol);
+	  input.ignore(1);
+	  input.getline(line,100);
+	  strcpy(temp,tube);
+	  if(!strcmp(line, temp))
+	    {
+	      input.close();
+	      return symbol;
+	    }
+	  symbol = '_';
+	}
+      input.close();
+    }
+    return symbol;
+}
+
+/* question 3 function to determine if a provided route is valid */
+int validate_route(char** map, int height, int width, char station[], char route[], char &destination[])
+{
+  return -1;
+}

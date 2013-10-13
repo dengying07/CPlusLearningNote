@@ -55,7 +55,7 @@ int main() {
 
   cout << "====================== Question 2 ======================" << endl << endl;
   
-  cout << "The symbol for Victoria station is '" << get_symbol_for_station_or_line("Victoria") << "'" << endl << endl;
+  cout << "The symbol for Circle line is '" << get_symbol_for_station_or_line("Circle Line") << "'" << endl << endl;
 
   cout << "The symbol for Oxford Circus station is '" << get_symbol_for_station_or_line("Oxford Circus") << "'" << endl << endl;
 
